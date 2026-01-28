@@ -35,4 +35,30 @@ function health(kind) {
     }
 }
 console.log(health(new eat()));
+function beauty(kind) {
+    return (typeof kind === "object" &&
+        kind != null &&
+        typeof kind.type === "string" &&
+        typeof kind.syrum === "string");
+}
+/*You are building a notification system. A notification can be either:
+
+a string message
+
+a number error code
+
+Write a function showNotification that handles both types safely:*/
+function notifymsg(msg) {
+    if (typeof msg === 'string') {
+        console.log(`messge: ${msg}`);
+    }
+    else {
+        console.log(`message:${msg}`);
+    }
+}
+notifymsg("welcom");
+notifymsg(404);
+let response = "riya";
+let numberlength = response.length;
+console.log(numberlength);
 //# sourceMappingURL=index.js.map

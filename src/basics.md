@@ -112,3 +112,46 @@ The `unknown` type is a safer alternative to `any`.
 It requires type checking before performing operations.
 
 Always narrow the type before usage.
+
+
+### 1️⃣ void — “this function returns nothing useful”
+👉 When to use void
+
+Use void when a function does not return a value (or you don’t care about the returned value).
+```
+button.addEventLostener("click",():void=>{
+  consol.log("click")
+})
+void = function finishes normally but returns nothing
+```
+### never — “this function NEVER finishes”
+```
+function infiniteLoop(): never {
+  while (true) {}
+}
+```
+never in type narrowing (VERY important 🔥)
+
+This is where never shines in real projects.
+
+type Shape = "circle" | "square";
+
+function getArea(shape: Shape) {
+  if (shape === "circle") {
+    return "circle area";
+  } else if (shape === "square") {
+    return "square area";
+  } else {
+    const _exhaustiveCheck: never = shape;
+    return _exhaustiveCheck;
+  }
+}
+
+
+If later you add:
+
+type Shape = "circle" | "square" | "triangle";
+
+
+TypeScript will ERROR 🔴
+Because triangle is not handled — super useful for catching bugs early.
